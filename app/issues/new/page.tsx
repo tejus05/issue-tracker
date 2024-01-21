@@ -1,9 +1,10 @@
 "use client";
 
-// import dynamic from 'next/dynamic';
-// const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
-  // ssr: false,
-  // });
+import dynamic from 'next/dynamic';
+const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
+  ssr: false,
+});
+// import SimpleMde from 'react-simplemde-editor';
 import ErrorMessage from '@/app/components/ErrorMessage';
 import Spinner from '@/app/components/Spinner';
 import { createIssueSchema } from '@/app/validationSchema';
@@ -15,7 +16,6 @@ import "easymde/dist/easymde.min.css";
 import { useRouter } from 'next/navigation';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { AiFillInfoCircle } from 'react-icons/ai';
-import SimpleMdeReact from 'react-simplemde-editor';
 import { z } from 'zod';
 
 type IssueForm = z.infer<typeof createIssueSchema>
@@ -60,7 +60,7 @@ const NewIssuePage =async () => {
         <Controller
           name='description'
           control={control}
-          render={({ field }) => <SimpleMdeReact placeholder="Description" {...field} />}
+          render={({ field }) => <SimpleMDE placeholder="Description" {...field} />}
         />
         <ErrorMessage>
           {errors.description?.message}
