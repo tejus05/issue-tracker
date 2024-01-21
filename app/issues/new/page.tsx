@@ -1,16 +1,16 @@
 "use client";
 
+// import dynamic from 'next/dynamic';
+// const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
+  // ssr: false,
+  // });
 import { Button, Callout, TextField } from '@radix-ui/themes';
 import axios from 'axios';
 import "easymde/dist/easymde.min.css";
-import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { AiFillInfoCircle } from 'react-icons/ai';
-const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
-ssr: false,
-});
+import SimpleMdeReact from 'react-simplemde-editor';
 
 interface IssueForm{
   title: string,
@@ -19,18 +19,17 @@ interface IssueForm{
 
 const NewIssuePage = () => {
   const router = useRouter();
-  const [error, setError] = useState('');
-  const { register, control, handleSubmit } = useForm<IssueForm>();
+  const { register, control, handleSubmit, setError, formState: {errors, isSubmitting} } = useForm<IssueForm>();
   return (
     <div className='max-w-xl space-y-3'>
-      { error && 
+      { errors.root && 
       <div>
         <Callout.Root color='red' className='mb-5'>
           <Callout.Icon>
             <AiFillInfoCircle />
           </Callout.Icon>
           <Callout.Text>
-            {error}
+            {errors.root.message}
           </Callout.Text>
         </Callout.Root>
       </div>}
@@ -39,7 +38,7 @@ const NewIssuePage = () => {
           await axios.post('/api/issues', data);
           router.push('/issues');
         } catch (error) {
-          setError("An unexpected error occured. ");
+          setError("root",{message: "An unexpected error occured. "});
         }
       })}>
         <TextField.Root>
@@ -48,9 +47,9 @@ const NewIssuePage = () => {
         <Controller
           name='description'
           control={control}
-          render={({ field }) => <SimpleMDE placeholder="Description" {...field} />}
+          render={({ field }) => <SimpleMdeReact placeholder="Description" {...field} />}
         />
-        <Button className='hover:cursor-pointer'>
+        <Button disabled={isSubmitting} className='hover:cursor-pointer'>
           Submit New Issue
         </Button>
       </form>
