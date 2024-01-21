@@ -5,11 +5,11 @@ import React from 'react'
 const IssuesPage = () => {
   return (
     <div>
-      <Button>
-        <Link href='/issues/new'>
-          New Issue
-        </Link>
-      </Button>
+      <Link href='/issues/new'>
+        <Button className='hover:cursor-pointer'>
+            New Issue
+        </Button>
+      </Link>
     </div>
   )
 }
