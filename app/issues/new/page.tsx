@@ -12,7 +12,7 @@ import { Button, Callout, TextField } from '@radix-ui/themes';
 import axios from 'axios';
 import "easymde/dist/easymde.min.css";
 import { useRouter } from 'next/navigation';
-import { Controller, useForm } from 'react-hook-form';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { AiFillInfoCircle } from 'react-icons/ai';
 import SimpleMdeReact from 'react-simplemde-editor';
 import { z } from 'zod';
@@ -24,6 +24,16 @@ const NewIssuePage = () => {
   const { register, control, handleSubmit, setError, formState: { errors, isSubmitting } } = useForm<IssueForm>({
     resolver: zodResolver(createIssueSchema)
   });
+
+  const onSubmit:SubmitHandler<IssueForm> = async (data) => {
+        try {
+          await axios.post('/api/issues', data);
+          router.push('/issues');
+        } catch (error) {
+          setError("root",{message: "An unexpected error occured. "});
+        }
+      }
+
   return (
     <div className='max-w-xl space-y-3'>
       { errors.root && 
@@ -37,14 +47,7 @@ const NewIssuePage = () => {
           </Callout.Text>
         </Callout.Root>
       </div>}
-      <form className='max-w-xl space-y-3' onSubmit={handleSubmit(async (data) => {
-        try {
-          await axios.post('/api/issues', data);
-          router.push('/issues');
-        } catch (error) {
-          setError("root",{message: "An unexpected error occured. "});
-        }
-      })}>
+      <form className='max-w-xl space-y-3' onSubmit={handleSubmit(onSubmit)}>
         <TextField.Root>
           <TextField.Input placeholder='Title' {...register('title')} />
         </TextField.Root>
