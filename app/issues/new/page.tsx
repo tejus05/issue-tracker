@@ -11,7 +11,6 @@ import { createIssueSchema } from '@/app/validationSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Callout, TextField } from '@radix-ui/themes';
 import axios from 'axios';
-import delay from 'delay';
 import "easymde/dist/easymde.min.css";
 import { useRouter } from 'next/navigation';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
@@ -20,7 +19,7 @@ import { z } from 'zod';
 
 type IssueForm = z.infer<typeof createIssueSchema>
 
-const NewIssuePage =async () => {
+const NewIssuePage = () => {
   const router = useRouter();
   const { register, control, handleSubmit, setError, formState: { errors, isSubmitting } } = useForm<IssueForm>({
     resolver: zodResolver(createIssueSchema)
@@ -34,8 +33,6 @@ const NewIssuePage =async () => {
           setError("root",{message: "An unexpected error occured. "});
         }
       }
-
-      await delay(2000)
 
   return (
     <div className='max-w-xl space-y-3'>
