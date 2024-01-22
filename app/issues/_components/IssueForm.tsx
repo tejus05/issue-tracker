@@ -1,10 +1,10 @@
 "use client";
 
-import dynamic from 'next/dynamic';
-const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
-  ssr: false,
-});
-// import SimpleMde from 'react-simplemde-editor';
+// import dynamic from 'next/dynamic';
+// const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
+//   ssr: false,
+// });
+import SimpleMDE from 'react-simplemde-editor';
 import ErrorMessage from '@/app/components/ErrorMessage';
 import Spinner from '@/app/components/Spinner';
 import { createIssueSchema } from '@/app/validationSchema';
