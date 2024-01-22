@@ -24,7 +24,7 @@ const DeleteIssueButton = ({issueId}:{issueId:number}) => {
         </AlertDialog.Description>
         <Flex mt="4" gap="3">
           <AlertDialog.Cancel>
-            <Button color='gray' variant='soft'>
+            <Button color='gray' variant='soft' className='hover:cursor-pointer'>
               Cancel
             </Button>
           </AlertDialog.Cancel>
@@ -35,7 +35,7 @@ const DeleteIssueButton = ({issueId}:{issueId:number}) => {
                 router.push('/issues');
                 router.refresh();
               }
-            }>
+            } className='hover:cursor-pointer'>
               Delete Issue
             </Button>
           </AlertDialog.Action>
