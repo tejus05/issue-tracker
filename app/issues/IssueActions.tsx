@@ -7,7 +7,7 @@ const IssueActions = () => {
     <div className='mb-5'>
         <Link href='/issues/new'>
           <Button className='hover:cursor-pointer'>
-              New Issue
+              New Issue 
           </Button>
         </Link>
       </div>
