@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import validator from 'validator'
 import EditIssueButton from './EditIssueButton'
 import IssueDetails from './IssueDetails'
-import DeleteIssueButton from './edit/DeleteIssueButton'
+import DeleteIssueButton from '../edit/DeleteIssueButton'
 
 interface Props {
   params: {
