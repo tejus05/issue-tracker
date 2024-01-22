@@ -1,13 +1,36 @@
-import { Button } from '@radix-ui/themes'
-import Link from 'next/link'
+"use client";
+
+import { AlertDialog, Button, Flex } from '@radix-ui/themes'
 
 const DeleteIssueButton = ({issueId}:{issueId:number}) => {
   return (
-    <Link href='/'>
-      <Button color='red' className='w-full hover:cursor-pointer'>
-        Delete Issue 
-      </Button>
-    </Link>
+    <AlertDialog.Root>
+      <AlertDialog.Trigger>
+        <Button color='red' className='w-full hover:cursor-pointer'>
+          Delete Issue 
+        </Button>
+      </AlertDialog.Trigger>
+      <AlertDialog.Content>
+        <AlertDialog.Title>
+          Confirm Deletion
+        </AlertDialog.Title>
+        <AlertDialog.Description>
+          Are you sure you want to delete? This action cannot be undone. 
+        </AlertDialog.Description>
+        <Flex mt="4" gap="3">
+          <AlertDialog.Cancel>
+            <Button color='gray' variant='soft'>
+              Cancel
+            </Button>
+          </AlertDialog.Cancel>
+          <AlertDialog.Action>
+            <Button color='red'>
+              Delete Issue
+            </Button>
+          </AlertDialog.Action>
+        </Flex>
+      </AlertDialog.Content>
+    </AlertDialog.Root>
   )
 }
 
