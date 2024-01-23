@@ -5,6 +5,8 @@ import validator from 'validator'
 import EditIssueButton from './EditIssueButton'
 import IssueDetails from './IssueDetails'
 import DeleteIssueButton from '../edit/DeleteIssueButton'
+import { getServerSession } from 'next-auth'
+import authOptions from '@/app/api/auth/authOptions'
 
 interface Props {
   params: {
@@ -17,6 +19,8 @@ const IssueDetailPage = async ({params:{id}}:Props) => {
   if (!validator.isNumeric(id)) {
     notFound();
   }
+
+  const session = await getServerSession(authOptions)
 
   const issue = await prisma.issue.findUnique({
     where: {
@@ -31,12 +35,16 @@ const IssueDetailPage = async ({params:{id}}:Props) => {
       <Box className='md:col-span-4'>
         <IssueDetails issue={ issue } />
       </Box>
-      <Box>
-        <Flex direction="column" gap="4">
-          <EditIssueButton issueId={Number(id)}/>
-          <DeleteIssueButton issueId={Number(id)}/>
-        </Flex>
-      </Box>
+      {
+        session && (
+          <Box>
+            <Flex direction="column" gap="4">
+              <EditIssueButton issueId={Number(id)}/>
+              <DeleteIssueButton issueId={Number(id)}/>
+            </Flex>
+          </Box>
+        )  
+      }
     </Grid>
   )
 }
