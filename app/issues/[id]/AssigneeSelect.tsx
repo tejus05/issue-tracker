@@ -33,11 +33,11 @@ const AssigneeSelect = ({issue}:{issue:Issue}) => {
         <Select.Content>
           <Select.Group>
             <Select.Label>Suggestions</Select.Label>
-            <Select.Item value="unassigned">Unassigned</Select.Item>
+            <Select.Item className='hover:cursor-pointer' value="unassigned">Unassigned</Select.Item>
             {
               users?.map(
                 user => (
-                  <Select.Item value={user.id!} key={user.id}>{user.name}</Select.Item>
+                  <Select.Item className='hover:cursor-pointer' value={user.id!} key={user.id}>{user.name}</Select.Item>
                 )
               )
             }
