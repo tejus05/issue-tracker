@@ -1,3 +1,4 @@
+import IssueChart from "./IssueChart";
 import IssueSummary from "./IssueSummary";
 import LatestIssues from "./LatestIssues";
 import Pagination from "./components/Pagination";
@@ -25,7 +26,8 @@ export default async function Home({searchParams}:{searchParams:{page:string}}) 
 
   return (
     <div>
-      <IssueSummary open={open} inProgress={inProgress} closed={closed}/>
+      <IssueChart open={open} inProgress={inProgress} closed={closed}/>
+      {/* <IssueSummary open={open} inProgress={inProgress} closed={closed}/> */}
       {/* <LatestIssues/> */}
     </div>
   )
