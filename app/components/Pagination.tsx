@@ -20,7 +20,7 @@ const Pagination = ({itemCount, pageSize, currentPage}:Props) => {
   const pageCount = Math.ceil(itemCount / pageSize);
 
   const changePage = (page:number) => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(searchParams); //so that existing query parameters are not erased
 
     params.set('page', page.toString()); //should be a string!!!
 
