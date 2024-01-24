@@ -1,3 +1,4 @@
+import { Flex, Grid } from "@radix-ui/themes";
 import IssueChart from "./IssueChart";
 import IssueSummary from "./IssueSummary";
 import LatestIssues from "./LatestIssues";
@@ -25,10 +26,12 @@ export default async function Home({searchParams}:{searchParams:{page:string}}) 
   })
 
   return (
-    <div>
-      <IssueChart open={open} inProgress={inProgress} closed={closed}/>
-      {/* <IssueSummary open={open} inProgress={inProgress} closed={closed}/> */}
-      {/* <LatestIssues/> */}
-    </div>
+    <Grid columns={{initial: "1", "md": "2"}} gap="5">
+      <Flex direction="column" gap="5">
+          <IssueChart open={open} inProgress={inProgress} closed={closed}/>
+          <IssueSummary open={open} inProgress={inProgress} closed={closed}/>
+      </Flex>
+      <LatestIssues/> 
+    </Grid>
   )
 }
