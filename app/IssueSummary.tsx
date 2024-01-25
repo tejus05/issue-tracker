@@ -1,4 +1,4 @@
-import { Status } from '@prisma/client'
+import { Status } from '@/prisma/generated/client'
 import { Card, Flex, Text } from '@radix-ui/themes'
 import Link from 'next/link'
 import React from 'react'
