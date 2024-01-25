@@ -15,7 +15,11 @@ const nextConfig = {
   }
 }
 
-module.exports = nextConfig
+module.exports = nextConfig, {
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
+}
 
 
 // Injected content via Sentry wizard below
