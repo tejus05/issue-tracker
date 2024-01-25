@@ -7,7 +7,7 @@ const LoadingIssuesPage = () => {
   return (
     <div>
       <IssueActions/>
-      <Table.Root variant='surface' className='mt-4'>
+      <Table.Root variant='surface'>
         <TableHeader>
           <Table.Row>
             <Table.ColumnHeaderCell>
