@@ -16,7 +16,7 @@ import { useRouter } from 'next/navigation';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { AiFillInfoCircle } from 'react-icons/ai';
 import { z } from 'zod';
-import { Issue } from '@prisma/client';
+import { Issue } from '@/prisma/generated/client';
 
 type IssueFormData = z.infer<typeof createIssueSchema>
 
