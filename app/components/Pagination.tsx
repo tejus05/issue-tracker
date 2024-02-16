@@ -3,7 +3,7 @@
 import { ChevronLeftIcon, ChevronRightIcon, DoubleArrowLeftIcon, DoubleArrowRightIcon } from '@radix-ui/react-icons';
 import { Button, Flex, Text } from '@radix-ui/themes'
 import { useRouter, useSearchParams } from 'next/navigation';
-import React from 'react'
+import { Suspense } from "react";
 
 interface Props{
   itemCount: number,
@@ -11,8 +11,16 @@ interface Props{
   currentPage: number
 }
 
-const Pagination = ({itemCount, pageSize, currentPage}:Props) => {
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 
+const Pagination = () => {
+  <Suspense fallback="<p>Loading...</p>">
+    <PaginationFunction/>
+  </Suspense>
+}
+
+const PaginationFunction = ({itemCount, pageSize, currentPage}:Props) =>{
   const router = useRouter();
 
   const searchParams = useSearchParams();

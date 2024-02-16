@@ -3,7 +3,7 @@
 import { Status } from '@/prisma/generated/client';
 import { Select } from '@radix-ui/themes'
 import { useRouter, useSearchParams } from 'next/navigation';
-
+import { Suspense } from "react";
 
 const statuses:{label:string,value?:Status}[] = [
   {
@@ -23,8 +23,16 @@ const statuses:{label:string,value?:Status}[] = [
   },
 ]
 
-const IssueStatusFilter = () => {
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 
+const IssueStatusFilter = () => {
+  <Suspense fallback="<p>Loading...</p>">
+    <IssueStatusFilterFunction/>
+  </Suspense>
+}
+
+const IssueStatusFilterFunction = () => {
   const router = useRouter();
 
   const searchParams =useSearchParams();
