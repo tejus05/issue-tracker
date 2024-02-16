@@ -1,24 +1,24 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'referrer-policy',
-            value: 'no-referrer'
-          }
-        ]
-      }
-    ]
-  },
-  experimental: {
-    missingSuspenseWithCSRBailout: false,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // async headers() {
+  //   return [
+  //     {
+  //       source: '/:path*',
+  //       headers: [
+  //         {
+  //           key: 'referrer-policy',
+  //           value: 'no-referrer'
+  //         }
+  //       ]
+  //     }
+  //   ]
+  // },
+  // experimental: {
+  //   missingSuspenseWithCSRBailout: false,
+  // },
+  // eslint: {
+  //   ignoreDuringBuilds: true,
+  // },
 };
 
 
