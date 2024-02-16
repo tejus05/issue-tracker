@@ -14,10 +14,12 @@ interface Props{
 export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
 
-const Pagination = () => {
-  <Suspense fallback="<p>Loading...</p>">
-    <PaginationFunction/>
-  </Suspense>
+const Pagination = ({itemCount, pageSize, currentPage}:Props) => {
+  return (
+    <Suspense fallback="<p>Loading...</p>">
+      <PaginationFunction itemCount={itemCount} pageSize={pageSize} currentPage={currentPage} />
+    </Suspense>
+  );
 }
 
 const PaginationFunction = ({itemCount, pageSize, currentPage}:Props) =>{
