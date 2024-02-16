@@ -27,10 +27,13 @@ export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
 
 const IssueStatusFilter = () => {
-  <Suspense fallback="<p>Loading...</p>">
-    <IssueStatusFilterFunction/>
-  </Suspense>
+  return (
+    <Suspense fallback="<p>Loading...</p>">
+      <IssueStatusFilterFunction/>
+    </Suspense>
+  );
 }
+
 
 const IssueStatusFilterFunction = () => {
   const router = useRouter();
