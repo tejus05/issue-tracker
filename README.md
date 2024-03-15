@@ -1,34 +1,77 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Issue Tracker
+
+This is a web application built with Next.js 14, utilizing App Router for navigation. It integrates CockroachDB for the database management, Prisma ORM for data modeling and access, Radix UI for user interface components, React Query for data fetching and caching, React Hook Form for form handling, React SimpleMDE Editor for Markdown editing, and TypeScript for type safety. Authentication is implemented using NextAuth.
+
+## Features
+
+- **Add, Delete, Edit Issues**: Logged-in users can perform CRUD operations on issues.
+- **Assign Issues**: Users can assign issues to themselves or others.
+- **View Only for Non-authorized Users**: Non-logged-in users can only view issues without any editing capabilities.
+- **Sort and Filter Issues**: Issues can be sorted and filtered based on different criteria.
+
+## Demo
+
+
+
+https://github.com/tejus05/issue-tracker/assets/118271901/ba1ad620-e00f-4cb2-9a93-ee1d466dbb29
+
+
+
+## Live Website
+
+[Live Website](https://issue-tracker-puce.vercel.app)
 
 ## Getting Started
 
-First, run the development server:
+To get a local copy up and running, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+1. Clone the repository:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```bash
+   git clone https://github.com/tejus05/issue-tracker.git
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. Install dependencies:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```bash
+   cd issue-tracker
+   npm install
+   ```
 
-## Learn More
+3. Configure environment variables:
 
-To learn more about Next.js, take a look at the following resources:
+   Create a `.env.local` file in the root directory and set the following environment variables:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```plaintext
+    DATABASE_URL="your-database-url"
+    NEXTAUTH_URL="your-nextauth-url"
+    NEXTAUTH_SECRET="your-nextauth-secret"
+    GOOGLE_CLIENT_ID="your-google-client-id"
+    GOOGLE_CLIENT_SECRET="your-google-client-secret"
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   Additionally, configure NextAuth with appropriate provider settings.
 
-## Deploy on Vercel
+4. Run the development server:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   npm run dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Technologies Used
+
+- Next.js 14
+- CockroachDB
+- Prisma ORM
+- Radix UI
+- React Query
+- React Hook Form
+- React SimpleMDE Editor
+- TypeScript
+- NextAuth
+
+## License
+
+This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit)
