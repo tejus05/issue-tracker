@@ -1,6 +1,6 @@
 # Issue Tracker
 
-This is a web application built with Next.js 14, utilizing App Router for navigation. It integrates CockroachDB for the database management, Prisma ORM for data modeling and access, Radix UI for user interface components, React Query for data fetching and caching, React Hook Form for form handling, React SimpleMDE Editor for Markdown editing, and TypeScript for type safety. Authentication is implemented using NextAuth.
+This is a web application built with Next.js 14, utilizing App Router for navigation. It integrates neon.tech for the database management, Prisma ORM for data modeling and access, Radix UI for user interface components, React Query for data fetching and caching, React Hook Form for form handling, React SimpleMDE Editor for Markdown editing, and TypeScript for type safety. Authentication is implemented using NextAuth.
 
 ## Features
 
@@ -77,7 +77,7 @@ To get a local copy up and running, follow these steps:
 ## Technologies Used
 
 - Next.js 14
-- CockroachDB
+- neon.tech (database)
 - Prisma ORM
 - Radix UI
 - React Query
